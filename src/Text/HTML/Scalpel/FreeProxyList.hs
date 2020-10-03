@@ -4,6 +4,11 @@
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
+-- | a very short example:
+--
+-- >>> import Text.HTML.Scalpel (scrapeURL)
+-- >>> scrapeURL freeProxyListUrl freeProxyListScraper
+-- [Entry {entryIp = ...}, ...]
 module Text.HTML.Scalpel.FreeProxyList
 ( Anonymity(..)
 , Entry(..)
@@ -17,22 +22,35 @@ import Text.Parsec hiding ((<|>))
 import Text.StringLike
 import qualified Data.ByteString as BS
 
+-- | according to https://free-proxy-list.net
+--
+-- There are 3 levels of proxies according to their anonymity.
+--
+--   * Level 1 - Elite Proxy / Highly Anonymous Proxy: The websites can't detect you are using a proxy.
+--
+--   * Level 2 - Anonymous Proxy: The websites know you are using a proxy but can't know your real IP.
+--
+--   * Level 3 - Transparent Proxy: The websites know you are using a proxy as well as your real IP.
+--
+-- for some reason `Level3` and `Transparent` are distinct from each other? i've no idea why so i just made seperate constructors for them
 data Anonymity = Anonymous | EliteProxy | Transparent | Level3
 	deriving (Show, Eq)
 
+-- | an actual proxy entry from free-proxy-list's table of proxies
 data Entry
 	= Entry
 		{ entryIp :: BS.ByteString
 		, entryPort :: Int
-		, entryCode :: BS.ByteString
-		, entryCountry :: BS.ByteString
+		, entryCode :: BS.ByteString -- ^the country code of the proxy (e.g - US, UK)
+		, entryCountry :: BS.ByteString -- ^the full name of the country
 		, entryAnonymity :: Anonymity
-		, entryGoogle :: Bool
-		, entryHttps :: Bool
-		, entryLastCheckedSeconds :: Int
+		, entryGoogle :: Bool -- ^can it connect to google? (usually it can't)
+		, entryHttps :: Bool -- ^can it do https?
+		, entryLastCheckedSeconds :: Int -- ^how many seconds has it been since the last check, this field is very rough tho
 		}
 	deriving (Show, Eq)
 
+-- | @freeProxyListUrl == "https://free-proxy-list.net"@
 freeProxyListUrl :: String
 freeProxyListUrl = "https://free-proxy-list.net"
 

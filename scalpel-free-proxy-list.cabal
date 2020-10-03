@@ -5,8 +5,8 @@ cabal-version: >=1.10
 
 name:                scalpel-free-proxy-list
 version:             0.1.0.0
-synopsis: scalpel scrapers for https://free-proxy-list.net
-description: [scalpel](https://hackage.haskell.org/package/scalpel) scrapers for https://free-proxy-list.net
+synopsis: scalpel scraper for free-proxy-list
+description: [scalpel](https://hackage.haskell.org/package/scalpel) scraper for https://free-proxy-list.net
 -- bug-reports:
 license:             MIT
 license-file:        LICENSE
@@ -15,6 +15,15 @@ maintainer:          tensorknower69
 copyright: 2020 tensorknower69
 category: Web
 build-type:          Simple
+
+source-repository head
+  type: git
+  location: https://github.com/tensorknower69/scalpel-free-proxy-list
+
+source-repository this
+  type: git
+  location: https://github.com/tensorknower69/scalpel-free-proxy-list
+  tag: 0.1.0.0
 
 library
   hs-source-dirs: src
