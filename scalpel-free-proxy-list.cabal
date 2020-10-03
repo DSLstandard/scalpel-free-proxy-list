@@ -15,7 +15,6 @@ maintainer:          tensorknower69
 copyright: 2020 tensorknower69
 category: Web
 build-type:          Simple
--- extra-source-files:  CHANGELOG.md
 
 library
   hs-source-dirs: src
@@ -34,8 +33,9 @@ test-suite test
   hs-source-dirs: test
   main-is: Test.hs
   build-depends:
-    HUnit,
     base >=4.13 && <4.14,
+    tasty,
+    tasty-hunit,
     scalpel,
     scalpel-free-proxy-list
   type: exitcode-stdio-1.0
