@@ -1,52 +1,54 @@
-cabal-version: >=1.10
+cabal-version:      >=1.10
+name:               scalpel-free-proxy-list
+version:            0.1.0.0
+license:            MIT
+license-file:       LICENSE
+copyright:          2020 tensorknower69
+maintainer:         tensorknower69
+author:             tensorknower69
+bug-reports:
+    https://github.com/tensorknower69/scalpel-free-proxy-list/issues
 
-name: scalpel-free-proxy-list
-version: 0.1.0.0
-synopsis: scalpel scraper for https://free-proxy-list.net
-description: provides a scalpel scraper for scraping proxy lists from https://free-proxy-list.net
-bug-reports: https://github.com/tensorknower69/scalpel-free-proxy-list/issues
-license: MIT
-license-file: LICENSE
-author: tensorknower69
-maintainer: tensorknower69
-copyright: 2020 tensorknower69
-category: Web
-build-type: Simple
+synopsis:           scalpel scraper for https://free-proxy-list.net
+description:
+    provides a scalpel scraper for scraping proxy lists from https://free-proxy-list.net
+
+category:           Web
+build-type:         Simple
 extra-source-files:
-  README.md
-  CHANGELOG.md
+    README.md
+    CHANGELOG.md
 
 source-repository head
-  type: git
-  location: https://github.com/tensorknower69/scalpel-free-proxy-list
+    type:     git
+    location: https://github.com/tensorknower69/scalpel-free-proxy-list
 
 source-repository this
-  type: git
-  location: https://github.com/tensorknower69/scalpel-free-proxy-list
-  tag: 0.1.0.0
+    type:     git
+    location: https://github.com/tensorknower69/scalpel-free-proxy-list
+    tag:      0.1.0.0
 
 library
-  hs-source-dirs: src
-  exposed-modules:
-    Text.HTML.Scalpel.FreeProxyList
-  build-depends:
-    base >=4.13 && <4.14,
-    bytestring,
-    parsec,
-    scalpel-core,
-    tagsoup
-  default-language: Haskell2010
-  ghc-options: -Wall -Wno-tabs
+    exposed-modules:  Text.HTML.Scalpel.FreeProxyList
+    hs-source-dirs:   src
+    default-language: Haskell2010
+    ghc-options:      -Wall -Wno-tabs
+    build-depends:
+        base >=4.13 && <4.14,
+        bytestring -any,
+        parsec -any,
+        scalpel-core -any,
+        tagsoup -any
 
 test-suite test
-  hs-source-dirs: test
-  main-is: Test.hs
-  build-depends:
-    base >=4.13 && <4.14,
-    tasty,
-    tasty-hunit,
-    scalpel,
-    scalpel-free-proxy-list
-  type: exitcode-stdio-1.0
-  default-language: Haskell2010
-  ghc-options: -Wall -Wno-tabs
+    type:             exitcode-stdio-1.0
+    main-is:          Test.hs
+    hs-source-dirs:   test
+    default-language: Haskell2010
+    ghc-options:      -Wall -Wno-tabs
+    build-depends:
+        base >=4.13 && <4.14,
+        tasty -any,
+        tasty-hunit -any,
+        scalpel -any,
+        scalpel-free-proxy-list -any
