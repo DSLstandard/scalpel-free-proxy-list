@@ -1,54 +1,61 @@
-cabal-version:      >=1.10
-name:               scalpel-free-proxy-list
-version:            0.1.0.0
-license:            MIT
-license-file:       LICENSE
-copyright:          2020 tensorknower69
-maintainer:         tensorknower69
-author:             tensorknower69
-bug-reports:
-    https://github.com/tensorknower69/scalpel-free-proxy-list/issues
+cabal-version: 1.12
 
-synopsis:           scalpel scraper for https://free-proxy-list.net
-description:
-    provides a scalpel scraper for scraping proxy lists from https://free-proxy-list.net
+-- This file has been generated from package.yaml by hpack version 0.34.2.
+--
+-- see: https://github.com/sol/hpack
 
-category:           Web
-build-type:         Simple
+name:           scalpel-free-proxy-list
+version:        0.1.0.1
+synopsis:       A scalpel scraper for https://free-proxy-list.net
+description:    A scalpel scraper for scraping proxy lists from https://free-proxy-list.net
+category:       Web
+homepage:       https://github.com/tensorknower69/scalpel-free-proxy-list#readme
+bug-reports:    https://github.com/tensorknower69/scalpel-free-proxy-list/issues
+author:         tensorknower69
+maintainer:     tensorknower69 <62006583+tensorknower69@users.noreply.github.com>
+copyright:      2020 tensorknower69
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
 extra-source-files:
     README.md
-    CHANGELOG.md
 
 source-repository head
-    type:     git
-    location: https://github.com/tensorknower69/scalpel-free-proxy-list
-
-source-repository this
-    type:     git
-    location: https://github.com/tensorknower69/scalpel-free-proxy-list
-    tag:      0.1.0.0
+  type: git
+  location: https://github.com/tensorknower69/scalpel-free-proxy-list
 
 library
-    exposed-modules:  Text.HTML.Scalpel.FreeProxyList
-    hs-source-dirs:   src
-    default-language: Haskell2010
-    ghc-options:      -Wall -Wno-tabs
-    build-depends:
-        base >=4.13 && <4.14,
-        bytestring -any,
-        parsec -any,
-        scalpel-core -any,
-        tagsoup -any
+  exposed-modules:
+      Text.HTML.Scalpel.FreeProxyList
+  other-modules:
+      Paths_scalpel_free_proxy_list
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wno-tabs
+  build-depends:
+      base >=4.13 && <5
+    , bytestring
+    , parsec
+    , scalpel-core
+    , tagsoup
+  default-language: Haskell2010
 
 test-suite test
-    type:             exitcode-stdio-1.0
-    main-is:          Test.hs
-    hs-source-dirs:   test
-    default-language: Haskell2010
-    ghc-options:      -Wall -Wno-tabs
-    build-depends:
-        base >=4.13 && <4.14,
-        tasty -any,
-        tasty-hunit -any,
-        scalpel -any,
-        scalpel-free-proxy-list -any
+  type: exitcode-stdio-1.0
+  main-is: Test.hs
+  other-modules:
+      Paths_scalpel_free_proxy_list
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wno-tabs -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.13 && <5
+    , bytestring
+    , parsec
+    , scalpel
+    , scalpel-core
+    , scalpel-free-proxy-list
+    , tagsoup
+    , tasty
+    , tasty-hunit
+  default-language: Haskell2010

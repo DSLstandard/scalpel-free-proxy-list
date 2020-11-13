@@ -1,0 +1,42 @@
+author: "tensorknower69"
+category: Web
+copyright: "2020 tensorknower69"
+description: "A scalpel scraper for scraping proxy lists from https://free-proxy-list.net"
+github: "tensorknower69/scalpel-free-proxy-list"
+license: MIT
+maintainer: "tensorknower69 <62006583+tensorknower69@users.noreply.github.com>"
+name: scalpel-free-proxy-list
+synopsis: "A scalpel scraper for https://free-proxy-list.net"
+version: 0.1.0.1
+
+extra-source-files:
+  - README.md
+
+library:
+  source-dirs: src
+  ghc-options:
+    - -Wall
+    - -Wno-tabs
+
+dependencies:
+  - base >= 4.13 && < 5
+  - bytestring
+  - parsec
+  - scalpel-core
+  - tagsoup
+
+tests:
+  test:
+    main: Test.hs
+    source-dirs: test
+    ghc-options:
+      - -Wall
+      - -Wno-tabs
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - scalpel-free-proxy-list
+      - tasty
+      - tasty-hunit
+      - scalpel
